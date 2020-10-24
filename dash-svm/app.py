@@ -14,6 +14,20 @@ from sklearn.svm import SVC
 import utils.dash_reusable_components as drc
 import utils.figures as figs
 
+#import dash
+#from dash.dependencies import Input, Output, State
+from datetime import date
+#import dash_html_components as html
+#import dash_core_components as dcc
+import dash_bootstrap_components as dbc
+import pandas as pd
+import dash_table
+import plotly.express as px
+from sqlalchemy import create_engine
+import psycopg2 as ps
+
+
+
 app = dash.Dash(
     __name__,
     meta_tags=[
@@ -21,6 +35,24 @@ app = dash.Dash(
     ],
 )
 server = app.server
+
+host = '157.230.55.87'
+port = 5432
+user = 'postgres'
+database = 'AMVA'
+
+try:
+    #conn = ps.connect(host=host,database=database,user=user,password=password,port=port)
+    conn = ps.connect(host=host,database=database,user=user,port=port)
+except ps.OperationalError as e:
+    raise e
+else:
+    print('Connected!')
+
+SQL_Query = pd.read_sql('SELECT * FROM eventosmodelo LIMIT 100', conn)
+scatter = px.scatter(SQL_Query, x='longitud', y='latitud')
+
+
 
 
 def generate_data(n_samples, dataset, noise):
@@ -263,6 +295,11 @@ app.layout = html.Div(
                                 ),
                             ],
                         ),
+
+                        html.Div(
+                        dcc.Graph(figure=scatter, id='scatter'),
+                        ),
+
                         html.Div(
                             id="div-graphs",
                             children=dcc.Graph(
@@ -274,6 +311,8 @@ app.layout = html.Div(
                                 ),
                             ),
                         ),
+
+
                     ],
                 )
             ],
