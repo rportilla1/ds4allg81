@@ -106,6 +106,7 @@ app.layout = html.Div(
                                     style={
                                         "text-decoration": "none",
                                         "color": "inherit",
+                                        
                                     },
                                 )
                             ],
@@ -113,7 +114,8 @@ app.layout = html.Div(
                         html.A(
                             id="banner-logo",
                             children=[
-                                html.Img(src=app.get_asset_url("dash-logo-new.png"))
+                                #html.Img(src=app.get_asset_url("dash-logo-new.png"))
+                                html.Img(src=app.get_asset_url("Moovit-logo.png"))
                             ],
                             href="https://plot.ly/products/dash/",
                         ),
@@ -121,14 +123,17 @@ app.layout = html.Div(
                 )
             ],
         ),
+        #### Inicia el cuerpo de Dashboard
         html.Div(
             id="body",
             className="container scalable",
+            
             children=[
                 html.Div(
                     id="app-container",
                     # className="row",
                     children=[
+
                         html.Div(
                             # className="three columns",
                             id="left-column",
@@ -296,9 +301,9 @@ app.layout = html.Div(
                             ],
                         ),
 
-                        html.Div(
-                        dcc.Graph(figure=scatter, id='scatter'),
-                        ),
+                        #html.Div(
+                        #dcc.Graph(figure=scatter, id='scatter'),
+                        #),
 
                         html.Div(
                             id="div-graphs",

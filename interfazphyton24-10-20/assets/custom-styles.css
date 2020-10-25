@@ -30,8 +30,7 @@
 .banner h2 {
     color: #a5b1cd;
     display: inline-block;
-    /* font-family: 'Playfair Display', sans-serif; */
-    font-family: 'Gill Sans', sans-serif;
+    font-family: 'Playfair Display', Bold 700;
     font-size: 4rem;
     line-height: 1;
     text-align: center;
@@ -198,7 +197,7 @@
 
 @media (min-width: 1301px) {
     #left-column {
-        flex: 1 20%;
+        flex: 1 50%;
         margin: 0 3rem 0 0;
         max-height: 83rem;
         overflow-x: hidden;
@@ -212,7 +211,7 @@
 
 @media (max-width: 1300px) {
     #left-column {
-        flex: 1 20%;
+        flex: 1 50%;
         margin: 0 3rem 0 0;
         max-height: 70rem;
         overflow-x: hidden;
